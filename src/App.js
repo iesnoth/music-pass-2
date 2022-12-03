@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
+import AlbumView from './AlbumView'
+import ArtistView from './ArtistView'
 
 function App() {
   let [search, setSearch] = useState('')
@@ -11,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const API_URL = `https://itunes.apple.com/search?term=`
-    
+
     if (search) {
       const fetchData = async () => {
         document.title = `${search} Music`
@@ -37,6 +40,8 @@ function App() {
       <SearchBar handleSearch={handleSearch} />
       {message}
       <Gallery data={data} />
+      <AlbumView />
+      <ArtistView />
     </div>
   );
 }
