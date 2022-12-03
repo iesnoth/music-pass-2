@@ -4,7 +4,6 @@ import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import AlbumView from './AlbumView'
 import ArtistView from './ArtistView'
-//import {Fragment} from 'react/cjs/react.production.min'
 
 function App() {
   let [search, setSearch] = useState('')

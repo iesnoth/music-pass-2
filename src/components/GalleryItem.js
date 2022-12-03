@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function GalleryItem(props){
-    let [view,setView] = useState(false)
+function GalleryItem(props) {
+    let [view, setView] = useState(false)
 
     const simpleStyle = {
         'width': '25vw',
@@ -11,7 +12,7 @@ function GalleryItem(props){
     }
 
     const simpleView = () => {
-        return(
+        return (
             <div style={simpleStyle}>
                 <h3>{props.item.trackName}</h3>
                 <h4>{props.item.collectionName}</h4>
@@ -32,18 +33,23 @@ function GalleryItem(props){
     }
 
     const detailView = () => {
-        return(
+        return (
             <div stlye={detailStyle}>
                 <h2>{props.item.trackName}</h2>
-                <h3>{props.item.collectionName}</h3>
+                <Link to={`/artist/${props.item.artistId}`}>
+                    <h3>{props.item.artistName}</h3>
+                </Link>
+                <Link to={`/album/${props.item.collectionId}`}>
+                    <h3>{props.item.collectionName}</h3>
+                </Link>
                 <h4>{props.item.primaryGenreName}</h4>
                 <h4>{props.item.releaseDate}</h4>
             </div>
         )
     }
 
-    return(
-        <div onClick={() => setView(!view)} style={{'display':'inline-block'}}>
+    return (
+        <div onClick={() => setView(!view)} style={{ 'display': 'inline-block' }}>
             {view ? detailView() : simpleView()}
         </div>
     )
