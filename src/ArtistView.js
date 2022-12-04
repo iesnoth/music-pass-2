@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 function ArtistView() {
     const { id } = useParams()
     const [artistData, setArtistData] = useState([])
+    const nav = useNavigate()
     const justAlbums = artistData.filter(entry => entry.collectionType === 'Album')
 
     useEffect(() => {
@@ -12,6 +13,7 @@ function ArtistView() {
             const response = await fetch(API_URL)
             const resData = await response.json()
             setArtistData(resData.results)
+            console.log(resData)
         }
         fetchData()
     }, [id])
@@ -28,6 +30,10 @@ function ArtistView() {
 
     return (
         <div>
+            <button onClick={() => nav(-1)}>Back</button>
+            |
+            <button onClick={() => nav('/')}>Home</button>
+            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <p>Loading...</p>}
             {renderAlbums}
         </div>
     )
