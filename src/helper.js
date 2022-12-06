@@ -7,7 +7,7 @@ const fetchSearch = async (searchTerm) => {
 }
 
 //take the promise fetchSearch returns, and give it to wrapPromise as an argument
-const wrapPromise = async (promise) => {
+const wrapPromise = (promise) => {
     //default state of promise:
     let status = 'pending'
     //result will store the data we get from the promise
