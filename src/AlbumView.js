@@ -7,7 +7,7 @@ function AlbumView() {
     const nav = useNavigate()
 
     useEffect(() => {
-        const API_URL = `http://localhost:4000/song/${id}`
+        const API_URL = `https://itunes.apple.com/search?term=${id}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
